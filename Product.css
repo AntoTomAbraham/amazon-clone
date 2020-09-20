@@ -1,0 +1,32 @@
+.star{
+    color:goldenrod;
+}
+.product_rating{
+    display: flex;
+}
+.product_price{
+    margin-top:5px;
+}
+.product_info{
+    height: 100px;
+    margin-bottom: 15px;
+}
+.product > button{
+    background-color: #f0c14b;
+    border: 1px #a88734 #9c7e31 #846a29;
+}
+.product_info{
+    background-color: white;
+    flex-direction: column;
+    min-width: 100px;
+    max-height: 400px;
+    margin: 10px;
+    align-items: center;
+    justify-content: self;
+}
+.product > img{
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 15px;
+}
