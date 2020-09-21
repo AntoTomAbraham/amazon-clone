@@ -5,9 +5,15 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import {useStateValue} from "./StateProvider";
 import { initialState } from './reducer.js';
+import Login from './Login';
+import { auth } from './Firebase';
 function Header() {
-    const [{basket},dispatch]=useStateValue();
-    
+    const [{basket ,user}]=useStateValue();
+    const login= ()=>{
+        if(user){
+            auth.signOut();
+        }
+    }
     return (
         <nav className="header">
             <Link to="/login">
@@ -20,10 +26,10 @@ function Header() {
           <SearchIcon className="header_searchIcon"/>
           </div>
           <div className="header_nav">
-              <Link to="/login" className='header_link'>
-              <div className="header_option">
-              <span className="header_optionLineOne">Hello Binod</span>
-              <span className="header_optionLinetwo">Sign In</span>
+              <Link to={!user && "./login"} className='header_link'>
+              <div onClick={login} className="header_option">
+    <span className="header_optionLineOne">Hello {user?.email}</span>
+    <span className="header_optionLinetwo">{user? "sign Out" : "Sign In"}</span>
               </div>
               </Link>
               <Link to="/" className="header_link">
